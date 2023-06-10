@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./Assets/css/style.css" />
   </head>
   <body>
     <header>
@@ -13,20 +14,67 @@
     <aside>
       <section id="search">
         <h2>Search for a City:</h2>
-        <input type="search" placeholder="Minneapolis" />
+        <input type="search" id="search-bar" ="Minneapolis" />
         <button id="search-btn">Search</button>
       </section>
       <section id="storage">
         <!-- local storage items here? -->
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
       </section>
     </aside>
     <main>
-      <article>
+      <article id="weather">
         <!-- current weather for city entered in search bar will appear here -->
+        <span id="city">Minneapolis (6/8/2023)</span>
+        <img src="" alt="" id="icon" />
+        <p>Temp: <span id="temp">84°F</span></p>
+        <p>Wind: <span id="speed">3 MPH</span></p>
+        <p>Humidity: <span id="humidity">64 %</span></p>
       </article>
       <article>
         <!-- 5-day forcast for city will appear here -->
+
+        <h3>5-Day Forecast:</h3>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
+        <div>
+          <!--  -->
+        </div>
       </article>
     </main>
+    <script src="Assets/js/script.js"></script>
   </body>
 </html>
