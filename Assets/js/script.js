@@ -1,19 +1,40 @@
 var weather = {
   apiKey: "a33cca847de5ea85a77efcba5384ad55",
   fetchWeather: function (city) {
+    // Fetch current weather
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
-        "&units=metric&appid=" +
+        "&units=imperial&appid=" +
         this.apiKey
     )
       .then((response) => response.json())
       .then((data) => {
-        this.displayWeather(data);
+        this.displayWeather(data); // Display current weather
+
+        // Fetch 5-day forecast
+        fetch(
+          "https://api.openweathermap.org/data/2.5/forecast?q=" +
+            city +
+            "&cnt=5&units=imperial&appid=" +
+            this.apiKey
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            this.displayForecast(data); // Display 5-day forecast
+          })
+          .catch((error) => {
+            console.log("Error fetching forecast:", error);
+          });
+
         this.saveCity(city); // Save the searched city to local storage
         this.updateStorageSection(); // Update the storage section
+      })
+      .catch((error) => {
+        console.log("Error fetching weather:", error);
       });
   },
+
   displayWeather: function (data) {
     var { name } = data;
     var { icon, description } = data.weather[0];
@@ -21,10 +42,12 @@ var weather = {
     var { speed } = data.wind;
     console.log(name, icon, description, temp, humidity, speed);
     document.querySelector("#city").innerText = name;
+    document.querySelector("#date").innerText = date;
+
     document.querySelector("#icon").src =
       "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     document.querySelector("#temp").innerText = temp + "°F";
-    document.querySelector("#speed").innerText = speed + "MPH";
+    document.querySelector("#speed").innerText = speed + " MPH";
     document.querySelector("#humidity").innerText = humidity + "%";
 
     document.querySelector("#weather").classList.remove("loading");
@@ -87,22 +110,74 @@ document
 
 weather.fetchWeather("Minneapolis");
 
-var fiveDayWeather = {
-  apiKey: "a33cca847de5ea85a77efcba5384ad55",
-  fetchFiveDayWeather: function (city) {
-    fetch(
-      "https://api.openweathermap.org/data/2.5/forecast?q=" +
-        city +
-        "&cnt=5&appid=" +
-        this.apiKey
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  },
-};
+//
+//
+// "https://api.openweathermap.org/data/2.5/forecast?q=" +
+//   city +
+//   "&cnt=5&units=imperial&appid=" +
+//   this.apiKey;
+// //
+//
+// var fiveDayWeather = {
+//   apiKey: "a33cca847de5ea85a77efcba5384ad55",
+//   fetchFiveDayWeather: function (city) {
+//     fetch(
+//       "https://api.openweathermap.org/data/2.5/forecast?q=" +
+//         city +
+//         "&cnt=5&units=imperial&appid=" +
+//         this.apiKey
+//     )
+//       .then((response) => response.json())
+//       .then((data) => {
+//         this.displayFiveDayWeather(data);
+//       });
+//   },
+//   displayFiveDayWeather: function (data) {
+//     var forecastSection = document.querySelector("#forecast");
+//     forecastSection.innerHTML = ""; // Clear the existing content
 
-// Update the storage section on page load
-window.addEventListener("DOMContentLoaded", function () {
-  weather.updateStorageSection();
-});
-``;
+//     data.list.forEach((item) => {
+//       var { dt_txt, main, weather, wind } = item;
+//       var { temp, humidity } = main;
+//       var { icon } = weather[0];
+//       var { speed } = wind;
+
+//       var forecastItem = document.createElement("div");
+//       forecastItem.classList.add("forecast-item");
+
+//       var speedElement = document.createElement("p");
+//       speedElement.textContent = "Wind: " + speed + " MPH";
+//       forecastItem.appendChild(speedElement);
+
+//       var date = document.createElement("p");
+//       date.classList.add("date");
+//       date.textContent = dt_txt;
+//       forecastItem.appendChild(date);
+
+//       var weatherIcon = document.createElement("img");
+//       weatherIcon.classList.add("weather-icon");
+//       weatherIcon.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+//       weatherIcon.alt = "";
+//       forecastItem.appendChild(weatherIcon);
+
+//       var temperature = document.createElement("p");
+//       temperature.classList.add("temperature");
+//       temperature.textContent = "Temp: " + temp + "°F";
+//       forecastItem.appendChild(temperature);
+
+//       var humidityElement = document.createElement("p");
+//       humidityElement.classList.add("humidity");
+//       humidityElement.textContent = "Humidity: " + humidity + "%";
+//       forecastItem.appendChild(humidityElement);
+
+//       forecastSection.appendChild(forecastItem);
+//     });
+//   },
+// };
+
+// fiveDayWeather.fetchFiveDayWeather("minneapolis");
+
+// // Update the storage section on page load
+// window.addEventListener("DOMContentLoaded", function () {
+//   weather.updateStorageSection();
+// });
