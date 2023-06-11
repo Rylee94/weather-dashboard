@@ -1,24 +1,83 @@
 * {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0
-    }
-    
-    header h1{
+    margin: 0;
+  }
+  
+  header h1 {
     display: flex;
     justify-content: flex-end;
     background-color: rgb(127, 70, 241);
     color: white;
-}
-    
-    aside {
+  }
+  
+  aside {
     float: left;
     width: 30%;
-    }
+  }
+  
+  #fiveDayWeather {
+    display: flex;
+  }
+  .forecast-day {
+    flex: 1;
+  }
 
-    main #weather{
+  main #weather,
+  main #fiveDayWeather {
     outline: solid 1px black;
     float: right;
     width: 70%;
-    }
-
-
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .forecast-day {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #storage button {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgb(127, 70, 241);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    width: 250px;
+    cursor: pointer;
+  }
+  
+  #search .search-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #search-bar,
+  #search-btn {
+    margin-bottom: 10px;
+    margin: 5px;
+    width: 250px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  #search-btn {
+    display: block;
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(141, 172, 240);
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    width: 250px;
+    cursor: pointer;
+  }
+  
+  
+  

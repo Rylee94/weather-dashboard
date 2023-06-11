@@ -11,11 +11,13 @@
     <header>
       <h1>Weather Dashboard</h1>
     </header>
-    <aside>
+    <aside id="left">
       <section id="search">
         <h2>Search for a City:</h2>
-        <input type="search" id="search-bar" value="Minneapolis" />
-        <button id="search-btn">Search</button>
+        <div class="search-container">
+          <input type="search" id="search-bar" value="Minneapolis" />
+          <button id="search-btn">Search</button>
+        </div>
       </section>
       <section id="storage"></section>
     </aside>
@@ -30,58 +32,58 @@
         <p>Humidity: <span id="humidity">64 %</span></p>
       </article>
       <article id="fiveDayWeather">
-        <h3>5-Day Forecast:</h3>
-        <section id="forecastContainer">
-          <div class="icons">
+          <h3>5-Day Forecast:</h3>
+
+          <div class="forecast-day">
             <p class="weather" id="day1"></p>
             <img src="" alt="" class="imgClass" id="img1" />
-            <p>Temp: <span class="temp" id="day1Temp">84°F</span></p>
+
+            <p>Temp: <span class="temperature" id="day1Temp">84°F</span></p>
             <p>Wind: <span class="speed" id="day1Speed">3 MPH</span></p>
             <p>
               Humidity: <span class="humidity" id="day1Humidity">64 %</span>
             </p>
           </div>
 
-          <div class="icons">
+          <div class="forecast-day">
             <p class="weather" id="day2"></p>
             <img src="" alt="" class="imgClass" id="img2" />
-            <p>Temp: <span class="temp" id="day2Temp">84°F</span></p>
+            <p>Temp: <span class="temperature" id="day2Temp">84°F</span></p>
             <p>Wind: <span class="speed" id="day2Speed">3 MPH</span></p>
             <p>
               Humidity: <span class="humidity" id="day2Humidity">64 %</span>
             </p>
           </div>
 
-          <div class="icons">
+          <div class="forecast-day">
             <p class="weather" id="day3"></p>
             <img src="" alt="" class="imgClass" id="img3" />
-            <p>Temp: <span class="temp" id="day3Temp">84°F</span></p>
+            <p>Temp: <span class="temperature" id="day3Temp">84°F</span></p>
             <p>Wind: <span class="speed" id="day3Speed">3 MPH</span></p>
             <p>
               Humidity: <span class="humidity" id="day3Humidity">64 %</span>
             </p>
           </div>
 
-          <div class="icons">
+          <div class="forecast-day">
             <p class="weather" id="day4"></p>
             <img src="" alt="" class="imgClass" id="img4" />
-            <p>Temp: <span class="temp" id="day4Temp">84°F</span></p>
+            <p>Temp: <span class="temperature" id="day4Temp">84°F</span></p>
             <p>Wind: <span class="speed" id="day4Speed">3 MPH</span></p>
             <p>
               Humidity: <span class="humidity" id="day4Humidity">64 %</span>
             </p>
           </div>
 
-          <div class="icons">
+          <div class="forecast-day">
             <p class="weather" id="day5"></p>
             <img src="" alt="" class="imgClass" id="img5" />
-            <p>Temp: <span class="temp" id="day5Temp">84°F</span></p>
+            <p>Temp: <span class="temperature" id="day5Temp">84°F</span></p>
             <p>Wind: <span class="speed" id="day5Speed">3 MPH</span></p>
             <p>
               Humidity: <span class="humidity" id="day5Humidity">64 %</span>
             </p>
           </div>
-        </section>
       </article>
     </main>
     <script src="./Assets/js/script.js"></script>
