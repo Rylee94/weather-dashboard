@@ -19,7 +19,6 @@ var weather = {
         console.log("Error fetching weather:", error);
       });
   },
-
   fetchForecast: function (city) {
     fetch(
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -30,12 +29,31 @@ var weather = {
       .then((response) => response.json())
       .then((data) => {
         for (i = 0; i < 5; i++) {
+          const icon = data.list[i].weather[0].icon;
+          document.getElementById("img" + (i + 1)).src =
+            "https://openweathermap.org/img/wn/" + icon + "@2x.png";
           document.getElementById("day" + (i + 1) + "Temp").innerHTML =
             data.list[i].main.temp + " °F";
           document.getElementById("day" + (i + 1) + "Speed").innerHTML =
             data.list[i].wind.speed;
           document.getElementById("day" + (i + 1) + "Humidity").innerHTML =
             data.list[i].main.humidity + " %";
+
+          const date = new Date(data.list[i].dt_txt);
+          const formattedDate = date.toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+          });
+          const formattedTime = date.toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
+          const formattedDateTime = formattedDate + " " + formattedTime;
+
+          document.getElementById("day" + (i + 1)).innerHTML =
+            formattedDateTime;
         }
       })
       .catch((error) => {
